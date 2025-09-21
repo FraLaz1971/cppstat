@@ -55,15 +55,15 @@ public:
 };
 
 
-inline int SampleHistogram:: buckets() { return(howManyBuckets); };
+inline int SampleHistogram::buckets() { return(howManyBuckets); };
 
-inline double SampleHistogram:: bucketThreshold(int i) {
+inline double SampleHistogram::bucketThreshold(int i) {
     if (i < 0 || i >= howManyBuckets)
         error("invalid bucket access");
     return(bucketLimit[i]);
 }
 
-inline int SampleHistogram:: inBucket(int i) {
+inline int SampleHistogram::inBucket(int i) {
     if (i < 0 || i >= howManyBuckets)
         error("invalid bucket access");
     return(bucketCount[i]);
