@@ -10,3 +10,9 @@ Statistics classes in c++
 `g++ stat.cpp -o stat -L. -lstat`
 ###
 `g++ histo.cpp -o histo -L. -lstat`
+###
+usage:
+###
+`./stat < samples.txt`
+###
+`./histo <min> <max> <step> < samples.txt`
