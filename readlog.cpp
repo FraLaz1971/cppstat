@@ -52,7 +52,7 @@ int main(int argc, char *argv[]){
     }
     cin >> par;
     cin >> bucket[i];
-    cout <<"["<<limitm1[i]<<","<<limit[i] << ") : " << bucket[i] << endl;
+    cout <<limitm1[i]<<","<<limit[i] << "," << bucket[i] << endl;
   }
   free(bucket);
   free(limit);
