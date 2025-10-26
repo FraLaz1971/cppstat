@@ -1,0 +1,25 @@
+CXX = cl /EHsc
+LD = link
+CXXFLAGS =
+LDFLAGS =
+LIBS = 
+OEXT =.obj
+EEXT =.exe
+RM = del /Q /F
+TARGET0=histo
+TARGET1=samplehistogram
+TARGET2=samplestatistic
+TARGET3=stat
+all: libstat.lib histo.exe stat.exe
+$(TARGET1)$(OEXT): $(TARGET1).cpp 
+	$(CXX) /c $?
+$(TARGET2)$(OEXT): $(TARGET2).cpp 
+	$(CXX) /c $?
+libstat.lib: $(TARGET1)$(OEXT) $(TARGET2)$(OEXT)
+	lib /VERBOSE /out:$@ $**
+$(TARGET0)$(EEXT): $(TARGET0)$(OEXT) libstat.lib
+	$(LD) /out:$(TARGET0)$(EEXT) $** $(LDFLAGS) $(LIBS)
+$(TARGET3)$(EEXT): $(TARGET3)$(OEXT)  libstat.lib
+	$(LD) /out:$(TARGET3)$(EEXT) $** $(LDFLAGS) $(LIBS)
+clean:
+	$(RM) *.obj $(TARGET0)$(EEXT) $(TARGET3)$(EEXT) libstat.lib
