@@ -96,7 +96,20 @@ using namespace std;
      }
      }
  }
- 
+
+ void SampleHistogram::printIntBuckets(std::ostream& s)
+ {
+     for(int i = 0; i < howManyBuckets; i++) {
+     if (bucketLimit[i] == max()) {
+         s << bucketLimit[(int)max()-1] << " " << bucketCount[i] << "\n";
+     } else if (i==0){
+         cerr << "-INF" << " " << bucketCount[0] << "\n";
+     } else {
+         s << bucketLimit[i-1] << " " << bucketCount[i] << "\n";
+     }
+     }
+ }
+
  void SampleHistogram::reset()
  {
      this->SampleStatistic::reset();

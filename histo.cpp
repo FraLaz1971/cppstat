@@ -12,15 +12,15 @@ int main(int argc, char *argv[]){
   SampleHistogram stat(hmin,hmax,width);
   while (cin>>temp)
     stat+=temp;
-  cout<<"nsamples: "<<stat.samples()<<endl;
-  cout<<"hmin: "<<hmin<<endl;
-  cout<<"hmax: "<<hmax<<endl;
-  cout<<"width: "<<width<<endl;
-  cout<<"min: "<<stat.min()<<endl;
-  cout<<"max: "<<stat.max()<<endl;
-  cout<<"mean: "<<stat.mean()<<endl;
-  cout<<"var: "<<stat.var()<<endl;
-  cout<<"stdDev: "<<stat.stdDev()<<endl;
+  cerr<<"nsamples: "<<stat.samples()<<endl;
+  cerr<<"hmin: "<<hmin<<endl;
+  cerr<<"hmax: "<<hmax<<endl;
+  cerr<<"width: "<<width<<endl;
+  cerr<<"min: "<<stat.min()<<endl;
+  cerr<<"max: "<<stat.max()<<endl;
+  cerr<<"mean: "<<stat.mean()<<endl;
+  cerr<<"var: "<<stat.var()<<endl;
+  cerr<<"stdDev: "<<stat.stdDev()<<endl;
   stat.printBuckets(cout);
   return 0;
 }

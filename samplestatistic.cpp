@@ -85,16 +85,14 @@
    return (positive)? t : -t;
  }
  
- void
- SampleStatistic::reset()
+ void SampleStatistic::reset()
  {
      n = 0; x = x2 = 0.0;
      maxValue = -HUGE_VAL;
      minValue = HUGE_VAL;
  }
  
- void
- SampleStatistic::operator+=(double value)
+ void SampleStatistic::operator+=(double value)
  {
      n += 1;
      x += value;
@@ -103,8 +101,7 @@
      if ( maxValue < value) maxValue = value;
  }
  
- double
- SampleStatistic::mean()
+ double SampleStatistic::mean()
  {
      if ( n > 0) {
      return (x / n);
@@ -114,8 +111,7 @@
      }
  }
  
- double
- SampleStatistic::var()
+ double SampleStatistic::var()
  {
      if ( n > 1) {
      return(( x2 - ((x * x) /  n)) / ( n - 1));
@@ -125,8 +121,7 @@
      }
  }
  
- double
- SampleStatistic::stdDev()
+ double SampleStatistic::stdDev()
  {
      if ( n <= 0 || this -> var() <= 0) {
      return(0);

@@ -1,7 +1,7 @@
 CXX = cl /EHsc
 LD = link
 CXXFLAGS =
-LDFLAGS =
+LDFLAGS = /LIBPATH:"C:\Program Files (x86)\Microsoft SDKs\Lib"
 LIBS = 
 OEXT =.obj
 EEXT =.exe
@@ -11,15 +11,19 @@ TARGET1=samplehistogram
 TARGET2=samplestatistic
 TARGET3=stat
 all: libstat.lib histo.exe stat.exe
-$(TARGET1)$(OEXT): $(TARGET1).cpp 
+$(TARGET0)$(OEXT): $(TARGET0).cpp
+	$(CXX) /c $?
+$(TARGET1)$(OEXT): $(TARGET1).cpp
 	$(CXX) /c $?
 $(TARGET2)$(OEXT): $(TARGET2).cpp 
+	$(CXX) /c $?
+$(TARGET3)$(OEXT): $(TARGET3).cpp
 	$(CXX) /c $?
 libstat.lib: $(TARGET1)$(OEXT) $(TARGET2)$(OEXT)
 	lib /VERBOSE /out:$@ $**
 $(TARGET0)$(EEXT): $(TARGET0)$(OEXT) libstat.lib
-	$(LD) /out:$(TARGET0)$(EEXT) $** $(LDFLAGS) $(LIBS)
+	$(LD) $(LDFLAGS) /out:$(TARGET0)$(EEXT) $**  $(LIBS)
 $(TARGET3)$(EEXT): $(TARGET3)$(OEXT)  libstat.lib
-	$(LD) /out:$(TARGET3)$(EEXT) $** $(LDFLAGS) $(LIBS)
+	$(LD) $(LDFLAGS) /out:$(TARGET3)$(EEXT) $** $(LDFLAGS) $(LIBS)
 clean:
 	$(RM) *.obj $(TARGET0)$(EEXT) $(TARGET3)$(EEXT) libstat.lib
